@@ -2,6 +2,7 @@ name: Shutdown
 run-name: shutdown
 
 on:
+  push:
   schedule:
     - cron: '0 21 * * *'
 
