@@ -1,0 +1,29 @@
+name: Shutdown
+run-name: shutdown
+
+on:
+  schedule:
+    - cron: '0 21 * * *'
+
+env:
+  TIMEWEB_API_TOKEN: ${{secrets.TIMEWEB_API_TOKEN}}
+
+jobs:
+  shutdown:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions.checkout@4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      
+      - name: Install dependencies
+        run: pip install -r reuirements.txt
+      
+      - name: Run Script
+        run: python test.py
